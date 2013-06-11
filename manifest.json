@@ -1,15 +1,23 @@
 {
   "name": "Mashup",
   "version": "0.1",
-  "description": "Google Chrome extension for serious Web lovers!",
-  "permissions": [
+  "description": "Google Chrome extension for Web connoisseurs!",
+    "background": {
+        "persistent": false,
+        "page": "background.html"
+    },
+    "permissions": [
     "bookmarks"
   ],
   "browser_action": {
       "default_title": "Mashup",
-      "default_icon": "icon.png",
-      "default_popup": "popup.html"
+      "default_icon": "icon.png"
   },
   "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+  "web_accessible_resources": [
+        "angular/*.js",
+        "jquery/*.js",
+        "bootstrap/*.js"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
