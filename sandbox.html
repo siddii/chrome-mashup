@@ -1,0 +1,68 @@
+<!--
+  - Copyright (c) 2012 The Chromium Authors. All rights reserved.
+  - Use of this source code is governed by a BSD-style license that can be
+  - found in the LICENSE file.
+  -->
+<!doctype html>
+<html>
+<head>
+    <script src="https://www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
+</head>
+<body>
+<script>
+
+        google.load("feeds", "1");
+
+        function feedLoaded(result) {
+            if (!result.error) {
+                // Grab the container we will put the results into
+                var container = document.getElementById("content");
+                container.innerHTML = '';
+
+                // Loop through the feeds, putting the titles onto the page.
+                // Check out the result object for a list of properties returned in each entry.
+                // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
+                for (var i = 0; i < result.feed.entries.length; i++) {
+                    var entry = result.feed.entries[i];
+                    var div = document.createElement("div");
+                    div.appendChild(document.createTextNode(entry.title));
+                    container.appendChild(div);
+                }
+            }
+        }
+
+        function OnLoad() {
+            // Create a feed instance that will grab Digg's feed.
+            var feed = new google.feeds.Feed("http://feeds.dzone.com/dzone/frontpage?format=xml");
+
+            // Calling load sends the request off.  It requires a callback function.
+            feed.load(feedLoaded);
+        }
+
+        google.setOnLoadCallback(OnLoad);
+
+
+    // Set up message event handler:
+    window.addEventListener('message', function(event) {
+        var command = event.data.command;
+        var name = event.data.name || 'hello';
+        switch(command) {
+            case 'render':
+                console.log('############ Rendering - ');
+                event.source.postMessage({
+                    name: name,
+                    html: 'Returned HTML'
+                }, event.origin);
+                break;
+
+            // You could imagine additional functionality. For instance:
+            //
+            // case 'new':
+            //   templates[event.data.name] = Handlebars.compile(event.data.source);
+            //   event.source.postMessage({name: name, success: true}, event.origin);
+            //   break;
+        }
+    });
+</script>
+</body>
+</html>
