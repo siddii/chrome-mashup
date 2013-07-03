@@ -10,6 +10,6 @@
                 "feedUrl": "http://news.google.com/?output=rss"
             }
         ],
-        "postRenderFunc": "console.log('Passed Parameters', $scope, $http);"
+        "postRenderFunc": "console.log('Passed Parameters', $scope, $http, angular);"
     }
 }
