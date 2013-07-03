@@ -59,6 +59,11 @@ function MashupController($scope, $http, FeedsService, LocalStorageService) {
         $scope.lang = app.defaultLang;
         $scope.tabs = app[$scope.lang].tabs;
         $scope.tabs.baseUrl = app[$scope.lang].baseUrl;
+        if (app[$scope.lang].postRenderFunc) {
+            var postRenderFunc = new Function("$scope", "$http", app[$scope.lang].postRenderFunc);
+            postRenderFunc($scope, $http);
+        }
+        console.log('######### app[$scope.lang].postRender = ', app[$scope.lang].postRender);
         $scope.selectedTab = LocalStorageService.getValue(selectedTabPrefKey, $scope.tabs[0].id);
         var tab = $scope.tabs.filter(function (tab){return tab.id === $scope.selectedTab;})[0];
         $scope.loadTab(tab);

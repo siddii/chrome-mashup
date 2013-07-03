@@ -2,13 +2,14 @@
     "defaultLang": "en",
     "en": {
         "language": "English",
-        "baseUrl": "http://en.wikipedia.org/",
+        "baseUrl": "http://news.google.com/",
         "tabs": [
             {
                 "id": "googleNews",
                 "title": "Google News",
                 "feedUrl": "http://news.google.com/?output=rss"
             }
-        ]
+        ],
+        "postRenderFunc": "console.log('Passed Parameters', $scope, $http);"
     }
 }
