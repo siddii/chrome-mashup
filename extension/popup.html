@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-csp ng-app="Mashup">
+<head>
+    <meta charset="utf-8">
+    <title>Chrome Mashup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chrome extension for web connoisseurs!">
+    <meta name="author" content="https://github.com/siddii">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="css/extension.css" rel="stylesheet"/>
+
+    <script src="jquery/jquery-1.9.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="angular/angular.js"></script>
+    <script src="angular/angular-sanitize.js"></script>
+    <script src="js/extension.js"></script>
+</head>
+
+<body ng-controller="MashupController">
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li ng-repeat="tab in tabs" ng-click="loadTab(tab);" ng-class="{active : tab.id==selectedTab}"><a href="#{{tab.id}}" data-toggle="tab">{{tab.title}}</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="{{tab.id}}" ng-repeat="tab in tabs" class="tab-pane fade in" ng-class="{active : tab.id==selectedTab}">
+            <ng-include src="'templates/feed.html'"></ng-include>
+        </div>
+    </div>
+</div>
+</body>
+</html>

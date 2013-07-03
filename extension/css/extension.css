@@ -1,0 +1,37 @@
+html {
+    width: 700px;
+    height: 500px;
+    overflow: auto;
+}
+
+.feed-title {
+    text-decoration: underline;
+}
+
+.label-search {
+    font-weight: bold;
+    font-size: 150%;
+    padding-right: 20px;
+}
+
+.form-search {
+    padding-top: 10px;
+    margin: 0 0 10px
+ }
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+h3 {
+    text-align: center;
+    color: #000000;
+}
+
+a, a:active, a:hover {
+    color: #000000;
+}
+
+.carousel-control {
+    top: 20px;
+}

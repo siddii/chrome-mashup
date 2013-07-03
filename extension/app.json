@@ -1,0 +1,14 @@
+{
+    "defaultLang": "en",
+    "en": {
+        "language": "English",
+        "baseUrl": "http://en.wikipedia.org/",
+        "tabs": [
+            {
+                "id": "googleNews",
+                "title": "Google News",
+                "feedUrl": "http://news.google.com/?output=rss"
+            }
+        ]
+    }
+}
