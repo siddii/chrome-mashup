@@ -4,6 +4,10 @@ html {
     overflow: auto;
 }
 
+.navbar {
+    position: fixed;
+}
+
 .feed-title {
     text-decoration: underline;
 }
