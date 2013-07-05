@@ -7,7 +7,7 @@
             {
                 "id": "googleNews",
                 "title": "Google News",
-                "feedUrl": "http://news.google.com/?output=rss"
+                "feedUrl": "http://feeds.dzone.com/dzone/frontpage?format=xml"
             }
         ],
         "postRenderFunc": "console.log('Passed Parameters', $scope, $http, angular);"

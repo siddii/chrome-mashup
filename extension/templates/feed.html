@@ -1,8 +1,10 @@
 <h3 ng-hide="Feeds[tab.id].length > 0">
     Loading...
 </h3>
-<div ng-show="Feeds[tab.id].length > 0" id="{{tab.id}}-carousel">
+<div ng-show="Feeds[tab.id].length > 0">
     <div ng-init="Feeds[tab.id].feedIndex=$index;" ng-repeat="feed in Feeds[tab.id]">
+        <h4 class="text-left feed-title"><a target="_new" ng-href="{{feed.link}}">{{feed.title}}</a></h4>
         <p class="text-left" ng-bind-html-unsafe="feed.content"></p>
+        <hr/>
     </div>
 </div>

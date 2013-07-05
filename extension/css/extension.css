@@ -8,6 +8,14 @@ html {
     position: fixed;
 }
 
+.navbar .brand {
+    padding-left: 30px;
+}
+
+.feed-container {
+    padding-top: 50px;
+}
+
 .feed-title {
     text-decoration: underline;
 }
