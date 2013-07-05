@@ -44,40 +44,6 @@ function FeedsService(GoogleAjaxFeedService, extensionURL, LocalStorageService) 
 }
 FeedsService.$inject = ['GoogleAjaxFeedService', 'extensionURL', 'LocalStorageService'];
 
-var selectedTabPrefKey = 'selectedTab';
-
-function MashupController($scope, $http, FeedsService, LocalStorageService) {
-    $scope.Feeds = {};
-    $scope.FeedIndex = {};
-
-    $scope.$watch(selectedTabPrefKey, function (newValue){
-        LocalStorageService.setValue(selectedTabPrefKey, newValue);
-    });
-
-
-    $http.get('app.json').success(function (app){
-        $scope.lang = app.defaultLang;
-        $scope.tabs = app[$scope.lang].tabs;
-        $scope.tabs.baseUrl = app[$scope.lang].baseUrl;
-        if (app[$scope.lang].postRenderFunc) {
-            var postRenderFunc = new Function("$scope", "$http", app[$scope.lang].postRenderFunc);
-            postRenderFunc($scope, $http);
-        }
-        console.log('######### app[$scope.lang].postRender = ', app[$scope.lang].postRender);
-        $scope.selectedTab = LocalStorageService.getValue(selectedTabPrefKey, $scope.tabs[0].id);
-        var tab = $scope.tabs.filter(function (tab){return tab.id === $scope.selectedTab;})[0];
-        $scope.loadTab(tab);
-    });
-    $scope.loadTab = function (tab){
-        $scope.selectedTab = tab.id;
-        if (!$scope.Feeds[tab.id]) {
-            $scope.Feeds[tab.id] = FeedsService.loadFeeds(tab.feedUrl, $scope.tabs.baseUrl);
-        }
-    };
-}
-
-MashupController.$inject = ['$scope', '$http', 'FeedsService', 'LocalStorageService'];
-
 function LocalStorageService () {
     var cacheTime = 1000 * 60 * 30; //30 min
 
@@ -106,10 +72,8 @@ function LocalStorageService () {
     }
 }
 
-var App = angular.module('Mashup', []);
+Mashup.service('FeedsService', FeedsService);
+Mashup.service('GoogleAjaxFeedService', GoogleAjaxFeedService);
+Mashup.service('LocalStorageService', LocalStorageService);
 
-App.service('FeedsService', FeedsService);
-App.service('GoogleAjaxFeedService', GoogleAjaxFeedService);
-App.service('LocalStorageService', LocalStorageService);
 
-App.value('extensionURL', chrome.extension.getURL('/'));

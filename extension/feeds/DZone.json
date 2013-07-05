@@ -1,0 +1,15 @@
+{
+    "title": "DZone Reader",
+     "feeds":
+        [
+            {
+            "title": "Popular",
+            "url": "http://feeds.dzone.com/dzone/frontpage?format=xml"
+            },
+            {
+            "title": "New",
+            "url": "http://www.dzone.com/links/feed/queue/rss.xml"
+            }
+        ]
+
+}

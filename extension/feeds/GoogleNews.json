@@ -1,0 +1,11 @@
+{
+    "title": "Google News",
+     "feeds":
+        [
+            {
+            "title": "Top Stories",
+            "url": "http://feeds.dzone.com/dzone/frontpage?format=xml"
+            }
+        ]
+
+}

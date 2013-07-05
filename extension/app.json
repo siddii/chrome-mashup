@@ -1,15 +1,15 @@
 {
-    "defaultLang": "en",
-    "en": {
-        "language": "English",
-        "baseUrl": "http://news.google.com/",
-        "tabs": [
+    "title": "Mashup",
+    "feeds":
+        [
             {
-                "id": "googleNews",
                 "title": "Google News",
-                "feedUrl": "http://feeds.dzone.com/dzone/frontpage?format=xml"
+                "url": "feeds/GoogleNews.json"
+            },
+            {
+                "title": "DZone",
+                "url": "feeds/DZone.json"
             }
-        ],
-        "postRenderFunc": "console.log('Passed Parameters', $scope, $http, angular);"
-    }
+        ]
+
 }
